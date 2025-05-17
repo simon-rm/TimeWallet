@@ -55,3 +55,12 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 end
+
+gem "simple_form", "~> 5.3"
+
+
+gem "minitest", "~> 5.25"
+
+gem "timecop", "~> 0.9.10"
+
+gem "minitest-rails", "~> 8.0"

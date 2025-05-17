@@ -141,6 +141,9 @@ GEM
     marcel (1.0.4)
     mini_mime (1.1.5)
     minitest (5.25.5)
+    minitest-rails (8.0.0)
+      minitest (~> 5.20)
+      railties (>= 8.0.0, < 8.1.0)
     msgpack (1.8.0)
     net-imap (0.5.8)
       date
@@ -265,6 +268,9 @@ GEM
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
+    simple_form (5.3.1)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     solid_cable (3.0.7)
       actioncable (>= 7.2)
       activejob (>= 7.2)
@@ -295,6 +301,7 @@ GEM
     thruster (0.1.13)
     thruster (0.1.13-aarch64-linux)
     thruster (0.1.13-x86_64-linux)
+    timecop (0.9.10)
     timeout (0.4.3)
     turbo-rails (2.0.13)
       actionpack (>= 7.1.0)
@@ -334,16 +341,20 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kamal
+  minitest (~> 5.25)
+  minitest-rails (~> 8.0)
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)
   rails (~> 8.0.2)
   rubocop-rails-omakase
+  simple_form (~> 5.3)
   solid_cable
   solid_cache
   solid_queue
   stimulus-rails
   thruster
+  timecop (~> 0.9.10)
   turbo-rails
   tzinfo-data
   web-console
