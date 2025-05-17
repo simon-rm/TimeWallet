@@ -15,14 +15,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_034948) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "days", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.integer "work_seconds", default: 0
-    t.integer "life_seconds", default: 0
-    t.integer "current_mode", default: 0
-    t.datetime "ended_at"
+    t.bigint "user_id"
+    t.datetime "started_at"
+    t.datetime "finished_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_days_on_user_id"
+  end
+
+  create_table "timers", force: :cascade do |t|
+    t.bigint "day_id"
+    t.string "name"
+    t.integer "seconds", default: 0
+    t.datetime "running_since"
+    t.index ["day_id"], name: "index_timers_on_day_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -30,6 +36,4 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_034948) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_foreign_key "days", "users"
 end

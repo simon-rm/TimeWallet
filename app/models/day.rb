@@ -1,30 +1,21 @@
 class Day < ApplicationRecord
+  class SwitchAfterFinishError < StandardError ; end
   belongs_to :user
+  has_many :timers
 
-  # TODO: validate either current_mode or ended_at is nil
+  accepts_nested_attributes_for :timers
 
-  enum :current_mode, %i[life work]
-
-  def switch_to!(new_mode)
-    update!(current_mode: new_mode, "#{current_mode}_seconds": elapsed_seconds)
+  def active?
+    started_at? && finished_at.nil?
   end
 
-  def finish!
-    switch_to!(nil)
-    update!(ended_at: Time.current)
+  def switch_to!(name)
+    raise SwitchAfterFinishError if finished_at?
+    current_timer&.stop!
+    timers.except(current_timer).find_by!(name:).run! if name
   end
 
-  def current?
-    ended_at.nil?
-  end
-
-  private
-
-  def elapsed_seconds
-    Time.current - last_switched_at
-  end
-
-  def last_switched_at
-    created_at + work_seconds + life_seconds
+  def current_timer
+    timers.detect(&:running?)
   end
 end
