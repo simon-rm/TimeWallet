@@ -1,6 +1,5 @@
 class DaysController < ApplicationController
   before_action :set_user
-  before_action :redirect_to_today_or_new_day, only: %i[switch_mode today finish]
 
   def new; end
 
@@ -9,8 +8,9 @@ class DaysController < ApplicationController
   end
 
   def create
-    day = Day.new(user: @user)
+    day = @user.days.new(default_day_config)
     if day.save
+      day.switch_to!(:life)
       redirect_to day
     else
       render :new, status: :unprocessable_entity
@@ -21,20 +21,28 @@ class DaysController < ApplicationController
     @days = @user.days
   end
 
-  def switch_mode
-    @user.today.switch_mode!(params[:mode])
+  def switch
+    @user.current_day.switch_to!(params[:mode])
+    redirect_to @user.current_day
   end
 
   def finish
-    @user.today.finish!
+    @user.current_day.switch_to!(nil)
+    update!(finished_at: Time.current)
+    redirect_to @user.current_day
   end
 
-  def today; end
+  def current_day
+    redirect_to @user.current_day || new_day_path
+  end
 
   private
 
-  def redirect_to_today_or_new_day
-    redirect_to @user.today || new_day_path
+  def default_day_config
+    {
+      started_at: Time.current,
+      timers_attributes: [ { name: :work }, { name: :life }, { name: :sleep } ]
+    }
   end
 
   def set_user

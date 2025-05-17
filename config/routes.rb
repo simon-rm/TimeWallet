@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root "days#today"
+  root "days#current_day"
 
-  resources :days, only: %i[index show new create update] do
+  resources :days, only: %i[index show new create] do
     collection do
-      post :switch_mode
+      post :switch
       post :finish
     end
   end
