@@ -4,11 +4,15 @@ export default class extends Controller {
   static targets = ["time"]
   static values = { time: Number, running: Boolean }
   connect() {
-    let time = this.timeValue
-    this.timeTarget.innerHTML = this.format(time)
+    const initialDatetime = new Date()
+    let initialDuration = this.timeValue
+    this.timeTarget.innerHTML = this.format(initialDuration)
     if (this.runningValue) {
       setInterval(() => {
-        this.timeTarget.innerHTML = this.format(--time)
+        let now = new Date()
+        let timePassed = Math.floor((now - initialDatetime) / 1000) ;
+        let timeLeft = initialDuration - timePassed;
+        this.timeTarget.innerHTML = this.format(timeLeft)
       }, 1000)
     }
   }
