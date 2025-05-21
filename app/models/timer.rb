@@ -1,4 +1,5 @@
 class Timer < ApplicationRecord
+  belongs_to :day, optional: true
   class AlreadyRunningError < StandardError; end
   class NotRunningError < StandardError; end
 
@@ -11,13 +12,17 @@ class Timer < ApplicationRecord
     running_since?
   end
 
-  def total_seconds
-    seconds + current_duration
+  def time_left
+    expected_duration - total_duration
+  end
+
+  def total_duration
+    duration + current_duration
   end
 
   def stop!
     raise NotRunningError unless running?
-    update!(running_since: nil, seconds: total_seconds)
+    update!(running_since: nil, duration: total_duration)
   end
 
   private

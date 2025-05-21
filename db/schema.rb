@@ -26,7 +26,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_08_034948) do
   create_table "timers", force: :cascade do |t|
     t.bigint "day_id"
     t.string "name"
-    t.integer "seconds", default: 0
+    t.integer "duration", default: 0
+    t.integer "expected_duration"
     t.datetime "running_since"
     t.index ["day_id"], name: "index_timers_on_day_id"
   end

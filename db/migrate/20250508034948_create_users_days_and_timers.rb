@@ -16,7 +16,8 @@ class CreateUsersDaysAndTimers < ActiveRecord::Migration[8.0]
     create_table :timers do |t|
       t.belongs_to :day, null: true
       t.string :name
-      t.integer :seconds, default: 0
+      t.integer :duration, default: 0
+      t.integer :expected_duration
       t.datetime :running_since
     end
   end

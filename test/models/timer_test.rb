@@ -38,23 +38,23 @@ describe Timer do
     end
   end
 
-  describe "#total_seconds" do
+  describe "#total_duration" do
     before { Timecop.freeze }
     after { Timecop.return }
 
     it "is 0 initially" do
-      _(@timer.total_seconds).must_equal 0
+      _(@timer.total_duration).must_equal 0
     end
 
     it "does not accumulate time upon creation" do
       Timecop.freeze(10.seconds)
-      _(@timer.total_seconds).must_equal 0
+      _(@timer.total_duration).must_equal 0
     end
 
     it "accumulates time while running" do
       @timer.run!
       Timecop.freeze(10.seconds)
-      _(@timer.total_seconds).must_equal 10.seconds
+      _(@timer.total_duration).must_equal 10.seconds
     end
 
     it "does not accumulate time while stopped" do
@@ -62,7 +62,7 @@ describe Timer do
       Timecop.freeze(10.seconds)
       @timer.stop!
       Timecop.freeze(5.seconds)
-      _(@timer.total_seconds).must_equal 10.seconds
+      _(@timer.total_duration).must_equal 10.seconds
     end
 
     it "accumulates time while running again" do
@@ -72,7 +72,7 @@ describe Timer do
       Timecop.freeze(5.seconds)
       @timer.run!
       Timecop.freeze(10.seconds)
-      _(@timer.total_seconds).must_equal 20.seconds
+      _(@timer.total_duration).must_equal 20.seconds
     end
   end
 end
