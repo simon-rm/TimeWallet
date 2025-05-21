@@ -28,23 +28,22 @@ describe Day do
     end
 
     describe "when called with nil" do
-      it "unsets current timer" do
-        @day.switch_to!(nil)
-        _(@day.current_timer).must_be_nil
+      it "raises ActiveRecord::RecordNotFound" do
+        assert_raises(ActiveRecord::RecordNotFound) { @day.switch_to!(nil) }
       end
     end
 
     describe "when called with nonexistent name" do
-      it "raises ArgumentError" do
+      it "raises ActiveRecord::RecordNotFound" do
         assert_raises(ActiveRecord::RecordNotFound) { @day.switch_to!(:foo) }
       end
     end
 
     describe "when called with current timer name" do
-      it "raises ArgumentError" do
+      it "raises Day::CurrentSwitchError" do
         @day.switch_to!(:life)
         @day.reload
-        assert_raises(ActiveRecord::RecordNotFound) { @day.switch_to!(:life) }
+        assert_raises(Day::CurrentSwitchError) { @day.switch_to!(:life) }
       end
     end
   end
