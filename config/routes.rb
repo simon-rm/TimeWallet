@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   root "days#show"
 
-  resources :days, only: %i[index show edit update] do
+  resources :days, only: %i[index show] do
     collection do
       post :switch_timer
     end
   end
+
+  resources :timers, only: %i[edit update]
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
