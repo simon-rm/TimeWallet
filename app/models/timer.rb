@@ -3,6 +3,14 @@ class Timer < ApplicationRecord
   class AlreadyRunningError < StandardError; end
   class NotRunningError < StandardError; end
 
+  def expected_time
+    Time.at(expected_duration).strftime("%H:%M")
+  end
+
+  def expected_time=(value)
+    self.expected_duration = value.to_time.seconds_since_midnight
+  end
+
   def run!
     raise AlreadyRunningError if running?
     update!(running_since: Time.current)
