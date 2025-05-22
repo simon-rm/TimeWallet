@@ -2,3 +2,4 @@
 import "@hotwired/turbo-rails"
 import "set_time_zone_cookie"
 import "controllers"
+window.Turbo = Turbo;

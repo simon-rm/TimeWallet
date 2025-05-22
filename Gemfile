@@ -64,3 +64,7 @@ gem "minitest", "~> 5.25"
 gem "timecop", "~> 0.9.10"
 
 gem "minitest-rails", "~> 8.0"
+
+gem "ultimate_turbo_modal", "~> 2.0"
+
+gem "dartsass-rails", "~> 0.5.1"
