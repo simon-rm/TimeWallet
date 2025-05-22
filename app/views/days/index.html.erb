@@ -1,0 +1,7 @@
+<div class="days">
+  <% @days.each do |day| %>
+    <%= link_to day do %>
+      <%= render day %>
+    <% end %>
+  <% end %>
+</div>

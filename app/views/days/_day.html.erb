@@ -1,0 +1,8 @@
+<div class="day">
+  <h3 class="day__date">
+    <%= day.started_at.in_time_zone.strftime("%d/%m/%y")%>
+  </h3>
+  <div class="timers">
+    <%= render day.timers.order(:id) %>
+  </div>
+</div>

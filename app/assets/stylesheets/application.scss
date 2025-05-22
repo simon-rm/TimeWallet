@@ -1,0 +1,156 @@
+@use "modal";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #eee;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+.timer {
+  text-align: center;
+
+  &.timer--paused {
+    filter: brightness(50%);
+  }
+
+  .timer__toggle-button {
+    all: unset;
+    width: 100%;
+  }
+
+  .timer__content {
+    padding: 20px;
+  }
+
+  &:nth-of-type(1) {
+    background-color: orange;
+  }
+
+  &:nth-of-type(2) {
+    background-color: mediumpurple;
+  }
+
+  &:nth-of-type(3) {
+    background-color: yellow;
+  }
+}
+
+.days {
+  display: flex;
+  flex-direction: column;
+  .day {
+    min-width: fit-content;
+    width: 100%;
+    display: inline-flex;
+    .day__date {
+      align-self: center;
+      padding: 5px;
+    }
+    border-bottom: #383838 solid 3px;
+  }
+
+  .timers {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+
+    .timer {
+      flex-grow: 1;
+      width: 130px;
+
+      .timer__name {
+        font-size: 1.5rem;
+        margin-bottom: 3px;
+      }
+
+      .timer__time {
+        font-size: 1.5rem;
+      }
+
+      .timer__edit-button {
+        display: none;
+      }
+    }
+  }
+}
+
+.day-interface {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .day-interface__index-link {
+    text-align: center;
+    margin: 30px auto;
+    width: fit-content;
+    display: block;
+    font-size: 2rem;
+    background-color: lightsteelblue;
+    border-radius: 40px;
+    padding: 20px;
+  }
+
+  .day {
+    height: 100%;
+    align-content: center;
+    .day__date {
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 4rem;
+    }
+  }
+
+  .timer {
+    position: relative;
+    .timer__time {
+      font-size: 5rem;
+      width: 100%;
+      text-align: center;
+    }
+    .timer__name {
+      font-size: 2rem;
+    }
+    .timer__edit-button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 40px;
+    }
+  }
+}
+
+.time-form__title {
+  font-size: 2rem;
+}
+.time-form {
+  .time-form__input {
+    font-size: 5rem;
+    text-align: center;
+    border: none;
+    width: 100%;
+  }
+
+  .time-form__save-button {
+    font-size: 1.75rem;
+    border: none;
+    background: lightblue;
+    padding: 10px;
+    border-radius: 50px;
+    display: block;
+    margin-left: auto;
+  }
+}
