@@ -8,7 +8,6 @@ class CreateUsersDaysAndTimers < ActiveRecord::Migration[8.0]
 
     create_table :days do |t|
       t.belongs_to :user, null: true
-      t.datetime :started_at
       t.datetime :finished_at
       t.timestamps
     end
