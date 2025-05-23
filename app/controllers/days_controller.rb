@@ -11,7 +11,7 @@ class DaysController < ApplicationController
   end
 
   def switch_timer
-    @user.current_day.switch_to!(params[:name])
-    redirect_to @user.current_day
+    @day = @user.current_day.switch_to!(params[:name])
+    render :show
   end
 end
