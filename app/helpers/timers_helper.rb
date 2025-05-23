@@ -10,6 +10,6 @@ module TimersHelper
   end
 
   def editable_timer?(timer)
-    timer.day.active? && (current_page?(timer.day) || current_page?(root_path))
+    timer.day.active? && !current_page?(days_path)
   end
 end

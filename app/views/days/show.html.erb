@@ -1,4 +1,6 @@
 <div class="day-interface">
-  <%= render @day %>
+  <%= turbo_frame_tag "day" do %>
+    <%= render @day %>
+  <% end %>
   <%= link_to "See history", days_path, class: "day-interface__index-link" %>
 </div>
