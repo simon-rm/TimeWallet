@@ -21,4 +21,9 @@ export default class extends Controller {
     const formattedTime = new Date(Math.abs(seconds) * 1000).toISOString().substring(11, 19)
     return `${seconds < 0 ? '-' : ''}${formattedTime}`
   }
+
+  switch() {
+    document.querySelector(".timer--running").classList.replace("timer--running", "timer--paused")
+    this.element.classList.replace("timer--paused", "timer--running")
+  }
 }

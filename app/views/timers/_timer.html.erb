@@ -6,7 +6,8 @@
   <% end %>
 
   <% if editable_timer?(timer) && !timer.running? %>
-    <%= button_to switch_timer_days_path, params: { name: timer.name }, class: "timer__toggle-button" do %>
+    <%= button_to switch_timer_days_path, params: { name: timer.name },
+                  class: "timer__toggle-button", data: { action: "timer#switch" } do %>
       <%= render "timers/timer_content", timer: %>
     <% end %>
   <% else %>
