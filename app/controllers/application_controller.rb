@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # Only allow modern browsers supporting webp images, web push, badges, import maps, CSS nesting, and CSS :has.
   allow_browser versions: :modern
-  before_action :load_session
   before_action :set_user
   around_action :switch_time_zone
 
@@ -12,10 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def set_user
-    @user = User.find_or_create_by(guest_token: session.id.cookie_value)
+    @user = User.find_or_create_by(guest_token:)
   end
 
-  def load_session
-    session[:init] = true
+  private
+
+  def guest_token
+    cookies.permanent.signed[:guest_token] ||= SecureRandom.uuid
   end
 end
