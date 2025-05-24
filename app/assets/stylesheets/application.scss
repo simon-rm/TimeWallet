@@ -130,6 +130,13 @@ a {
     .timer__name {
       font-size: 2rem;
     }
+    .timer__objective {
+      text-align: right;
+      font-size: 1.25rem;
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+    }
   }
 }
 

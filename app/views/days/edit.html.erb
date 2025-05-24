@@ -2,7 +2,7 @@
     <%= form_with model: @day, class: "day-form", data: { controller: "calculate-time" } do |f| %>
     <%= f.fields_for :timers do |tf| %>
       <div class="day-form__time-field day-form__<%= tf.object.name %>-field">
-        <%= tf.label :expected_time, "#{tf.object.name.titleize} Budget" %>
+        <%= tf.label :expected_time, "#{tf.object.name.titleize} Objective" %>
         <%= tf.text_field :expected_time,
                           placeholder: "HH:MM",
                           pattern: '^(?:[01]?\d|2[0-3]):[0-5]\d$',
