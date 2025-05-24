@@ -22,7 +22,6 @@ describe Day do
     describe "When called after the day finishes" do
       it "raises SwitchAfterFinishError" do
         @day.update finished_at: Time.current
-
         assert_raises(Day::SwitchAfterFinishError) { @day.switch_to!(:life) }
       end
     end

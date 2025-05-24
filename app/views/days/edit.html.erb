@@ -1,0 +1,18 @@
+<%= modal advance: false do %>
+    <%= form_with model: @day, class: "day-form", data: { controller: "calculate-time" } do |f| %>
+    <%= f.fields_for :timers do |tf| %>
+      <div class="day-form__time-field">
+        <%= tf.label :expected_time, "#{tf.object.name.titleize} Budget" %>
+        <%= tf.text_field :expected_time,
+                          placeholder: "HH:MM",
+                          pattern: '^(?:[01]?\d|2[0-3]):[0-5]\d$',
+                          title: '00:00-23:59',
+                          maxlength: 5,
+                          inputmode: 'numeric',
+                          data: { calculate_time_target: tf.object.name == "life" ? "calculatedTime" : "time" },
+                          readonly: tf.object.name == "life" %>
+      </div>
+    <% end %>
+    <%= f.submit "Save" %>
+  <% end %>
+<% end %>

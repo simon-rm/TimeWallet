@@ -1,4 +1,7 @@
 <div class="day-interface">
+  <% if @day.active? %>
+    <%= link_to "", edit_day_path(@day), data: { turbo_frame: "modal" }, class: "day-interface__edit-button fa-solid fa-pen-to-square" %>
+  <% end %>
   <%= turbo_frame_tag "day" do %>
     <%= render @day %>
   <% end %>

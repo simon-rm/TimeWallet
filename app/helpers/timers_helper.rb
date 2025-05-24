@@ -8,8 +8,4 @@ module TimersHelper
       :old
     end
   end
-
-  def editable_timer?(timer)
-    timer.day.active? && !current_page?(days_path)
-  end
 end

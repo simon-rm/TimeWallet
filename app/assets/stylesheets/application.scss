@@ -83,10 +83,6 @@ a {
       .timer__time {
         font-size: 1.25rem;
       }
-
-      .timer__edit-button {
-        display: none;
-      }
     }
   }
 }
@@ -105,6 +101,13 @@ a {
     background-color: lightsteelblue;
     border-radius: 40px;
     padding: 20px;
+  }
+
+  .day-interface__edit-button {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    font-size: 40px;
   }
 
   .day {
@@ -127,27 +130,29 @@ a {
     .timer__name {
       font-size: 2rem;
     }
-    .timer__edit-button {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-      font-size: 40px;
-    }
   }
 }
 
-.time-form__title {
-  font-size: 2rem;
-}
-.time-form {
-  .time-form__input {
-    font-size: 5rem;
+.day-form {
+
+  .day-form__time-field {
+    &:not(:last-of-type) {
+      border-bottom: 2px solid black;
+    }
+  }
+  label {
+    text-align: center;
+    display: block;
+    font-size: 1.5rem;
+  }
+  input {
+    font-size: 3.5rem;
     text-align: center;
     border: none;
     width: 100%;
   }
 
-  .time-form__save-button {
+  [type="submit"] {
     font-size: 1.75rem;
     border: none;
     background: lightblue;

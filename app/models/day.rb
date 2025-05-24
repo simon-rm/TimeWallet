@@ -11,9 +11,19 @@ class Day < ApplicationRecord
   }
 
   belongs_to :user
-  has_many :timers
+  has_many :timers, -> { order :id }
+  validate :timers_expected_durations_equal_24_hours
 
   accepts_nested_attributes_for :timers
+
+
+  def timers_expected_durations_equal_24_hours
+    return if timers.map(&:expected_duration).compact.empty?
+
+    unless timers.sum(&:expected_duration) == 24.hours
+      errors.add(:timers, "There are only 24 hours in a day! Your timers need to add up to 24 hours.")
+    end
+  end
 
   def self.finish_and_start_for(user)
     config = user.current_day&.config || DEFAULT_CONFIG

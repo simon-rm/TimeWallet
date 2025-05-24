@@ -4,6 +4,17 @@ class DaysController < ApplicationController
   end
 
   def edit
+    @day = Day.find(params[:id])
+  end
+
+  def update
+    @day = Day.find(params[:id])
+
+    if @day.update(day_params)
+      redirect_to @day
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -13,5 +24,11 @@ class DaysController < ApplicationController
   def switch_timer
     @day = @user.current_day.switch_to!(params[:name])
     render :show
+  end
+
+  private
+
+  def day_params
+    params.require(:day).permit(timers_attributes: %i[id expected_time])
   end
 end

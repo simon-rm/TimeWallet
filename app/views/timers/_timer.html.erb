@@ -1,11 +1,7 @@
 <div class="timer timer--<%= timer_state(timer) %>" data-controller="timer"
      data-timer-running-value="<%= timer.running? %>" data-timer-time-value="<%= timer.time_left %>">
 
-  <% if editable_timer?(timer) %>
-    <%= link_to "", edit_timer_path(timer), data: { turbo_frame: "modal" }, class: "timer__edit-button fa-solid fa-pen-to-square" %>
-  <% end %>
-
-  <% if editable_timer?(timer) && !timer.running? %>
+  <% if timer_state(timer) == :paused && !current_page?(days_path) %>
     <%= button_to switch_timer_days_path, params: { name: timer.name },
                   class: "timer__toggle-button", data: { action: "timer#switch" } do %>
       <%= render "timers/timer_content", timer: %>
