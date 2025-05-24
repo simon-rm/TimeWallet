@@ -139,7 +139,24 @@ a {
     &:not(:last-of-type) {
       border-bottom: 2px solid black;
     }
+
+    &.day-form__life-field {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      margin-top: 10px;
+
+      input {
+        font-size: 1.5rem;
+        color: #444;
+      }
+      label {
+        font-size: 1rem;
+      }
+    }
   }
+
   label {
     text-align: center;
     display: block;
