@@ -1,6 +1,10 @@
 <div class="timer__content">
   <h3 class="timer__name"><%= timer.name %></h3>
-  <div data-timer-target="time" class="timer__time"></div>
+  <% if current_page?(days_path) && !timer.day.active? %>
+    <div class="timer__time"><%= format_duration(timer.duration)  %></div>
+  <% else %>
+    <div data-timer-target="time" class="timer__time"></div>
+  <% end %>
   <% unless current_page?(days_path) %>
     <div class="timer__objective"> Objective: <%= timer.expected_time %> </div>
   <% end %>
