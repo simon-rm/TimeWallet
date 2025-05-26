@@ -26,13 +26,10 @@ class Day < ApplicationRecord
   end
 
   def self.finish_and_start_for(user)
+    now = Time.current
     config = user.current_day&.config || DEFAULT_CONFIG
-    user.current_day&.update!(finished_at: Time.current)
-    user.days.create!(config)
-  end
-
-  def started_at
-   Time.current - timers.sum(&:total_duration)
+    user.current_day&.update!(finished_at: now)
+    user.days.create!(started_at: now, **config)
   end
 
   def active?
@@ -63,6 +60,7 @@ class Day < ApplicationRecord
 
   private
 
+  # TODO: What if the user skips a day?
   def night_sleeping?
     current_timer&.name == "sleep" && started_at.yesterday?
   end
