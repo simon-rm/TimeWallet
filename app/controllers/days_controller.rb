@@ -18,7 +18,7 @@ class DaysController < ApplicationController
   end
 
   def index
-    @days = @user.days.order(id: :desc).except(@user.current_day)
+    @days = @user.days.order(started_at: :desc)
   end
 
   def switch_timer
