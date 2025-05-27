@@ -41,7 +41,7 @@ class Day < ApplicationRecord
     raise CurrentSwitchError if current_timer&.name == name.to_s
 
     woke_up = night_sleeping?
-    current_timer&.stop!
+    stop_all_timers!
 
     today = woke_up ? Day.finish_and_start_for(user) : self
     today.timers.find_by!(name:).run!
@@ -59,6 +59,10 @@ class Day < ApplicationRecord
   end
 
   private
+
+  def stop_all_timers!
+    timers.select(&:running?).each(&:stop!)
+  end
 
   # TODO: What if the user skips a day?
   def night_sleeping?
