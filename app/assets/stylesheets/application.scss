@@ -6,25 +6,34 @@
   box-sizing: border-box;
 }
 
+:root {
+  --bg-color-dark: #222831;
+  --bg-color: #393E46;
+  --main-color: #bbb;
+  --accent-color: #008388;
+}
+
 body, html {
   height: 100%;
   width: 100%;
+  color: var(--main-color);
 }
 
 body {
-  background-color: #eee;
+  background-color: var(--bg-color-dark);
 }
 
 a {
-  color: black;
+  color: var(--main-color);
   text-decoration: none;
 }
 
 .timer {
+  background-color: var(--bg-color);
   text-align: center;
 
-  &.timer--paused {
-    filter: brightness(50%);
+  &.timer--running {
+    background-color: var(--accent-color);
   }
 
   .timer__toggle-button {
@@ -34,18 +43,6 @@ a {
 
   .timer__content {
     padding: 20px;
-  }
-
-  &:nth-of-type(1) {
-    background-color: orange;
-  }
-
-  &:nth-of-type(2) {
-    background-color: mediumpurple;
-  }
-
-  &:nth-of-type(3) {
-    background-color: yellow;
   }
 }
 
@@ -59,7 +56,7 @@ a {
       align-self: center;
       padding: 5px;
     }
-    border-bottom: #383838 solid 3px;
+    border-bottom: var(--main-color) solid 3px;
   }
 
   .timers {
@@ -98,7 +95,7 @@ a {
     width: fit-content;
     display: block;
     font-size: 1.5rem;
-    background-color: lightsteelblue;
+    background-color: var(--bg-color);
     border-radius: 40px;
     padding: 20px;
   }
@@ -122,8 +119,10 @@ a {
 
   .timer {
     position: relative;
+    margin: 10px 20px;
+    border-radius: 10px;
     .timer__time {
-      font-size: 5rem;
+      font-size: 4.5rem;
       width: 100%;
       text-align: center;
     }
@@ -141,22 +140,17 @@ a {
 }
 
 .day-form {
-
   .day-form__time-field {
-    &:not(:last-of-type) {
-      border-bottom: 2px solid black;
-    }
-
     &.day-form__life-field {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 10px;
       border: none;
       margin-top: 10px;
 
       input {
         font-size: 1.5rem;
-        color: #444;
+        color: #999;
       }
       label {
         font-size: 1rem;
@@ -170,6 +164,9 @@ a {
     font-size: 1.5rem;
   }
   input {
+    background-color: var(--bg-color-dark);
+    color: var(--main-color);
+    border-radius: 10px;
     font-size: 3.5rem;
     text-align: center;
     border: none;
@@ -177,12 +174,17 @@ a {
   }
 
   [type="submit"] {
+    margin-top: 10px;
     font-size: 1.75rem;
     border: none;
-    background: lightblue;
+    background-color: var(--accent-color);
     padding: 10px;
     border-radius: 50px;
     display: block;
     margin-left: auto;
   }
+}
+
+.modal-content {
+  background-color: var(--bg-color);
 }

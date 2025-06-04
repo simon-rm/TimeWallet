@@ -66,6 +66,6 @@ class Day < ApplicationRecord
 
   # TODO: What if the user skips a day?
   def night_sleeping?
-    current_timer&.name == "sleep" && started_at.yesterday?
+    current_timer&.name == "sleep" && started_at.before?(Date.today)
   end
 end
