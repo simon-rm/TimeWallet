@@ -73,10 +73,10 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
     ast (2.4.3)
-    base64 (0.2.0)
+    base64 (0.3.0)
     bcrypt_pbkdf (1.1.1)
-    benchmark (0.4.0)
-    bigdecimal (3.1.9)
+    benchmark (0.4.1)
+    bigdecimal (3.2.2)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -152,7 +152,7 @@ GEM
       minitest (~> 5.20)
       railties (>= 8.0.0, < 8.1.0)
     msgpack (1.8.0)
-    net-imap (0.5.8)
+    net-imap (0.5.9)
       date
       net-protocol
     net-pop (0.1.2)
@@ -175,11 +175,12 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
-    phlex (2.2.1)
+    phlex (2.3.1)
       zeitwerk (~> 2.7)
-    phlex-rails (2.2.0)
-      phlex (~> 2.2.1)
+    phlex-rails (2.3.1)
+      phlex (~> 2.3.0)
       railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -196,7 +197,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.1.15)
+    rack (3.1.16)
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
@@ -234,8 +235,8 @@ GEM
       thor (~> 1.0, >= 1.2.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.2.1)
-    rdoc (6.14.0)
+    rake (13.3.0)
+    rdoc (6.14.1)
       erb
       psych (>= 4.0.0)
     regexp_parser (2.10.0)
@@ -313,7 +314,7 @@ GEM
       concurrent-ruby (~> 1.0)
     tzinfo-data (1.2025.2)
       tzinfo (>= 1.0.0)
-    ultimate_turbo_modal (2.0.3)
+    ultimate_turbo_modal (2.0.4)
       phlex-rails
       rails
       stimulus-rails
@@ -328,7 +329,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    websocket-driver (0.7.7)
+    websocket-driver (0.8.0)
       base64
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
